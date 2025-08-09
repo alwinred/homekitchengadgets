@@ -9,6 +9,7 @@ import { Button } from '@/components/ui/button'
 import { Badge } from '@/components/ui/badge'
 import { Edit, Eye, Trash2, Plus } from 'lucide-react'
 import { formatDate } from '@/lib/utils'
+import HeroImage from '@/components/hero-image'
 
 interface Post {
   id: string
@@ -140,7 +141,7 @@ export default function AdminPostsPage() {
         {filteredPosts.map((post) => (
           <Card key={post.id} className="overflow-hidden hover:shadow-lg transition-shadow">
             <div className="relative h-48 w-full">
-              <img
+              <HeroImage
                 src={post.heroImage}
                 alt={post.title}
                 className="w-full h-full object-cover"

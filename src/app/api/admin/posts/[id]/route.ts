@@ -50,7 +50,19 @@ export async function PUT(
     }
 
     const body = await request.json()
-    const { title, excerpt, content, heroImage, status } = body
+    const { 
+      title, 
+      excerpt, 
+      content, 
+      heroImage, 
+      status,
+      // SEO Fields
+      seoTitle,
+      seoDescription,
+      seoKeywords,
+      focusKeyword,
+      readingTime
+    } = body
 
     // Validate status if provided
     if (status && !Object.values(PostStatus).includes(status)) {
@@ -69,10 +81,17 @@ export async function PUT(
         ...(content !== undefined && { content }),
         ...(heroImage !== undefined && { heroImage }),
         ...(status !== undefined && { status }),
+        // SEO Fields
+        ...(seoTitle !== undefined && { seoTitle }),
+        ...(seoDescription !== undefined && { seoDescription }),
+        ...(seoKeywords !== undefined && { seoKeywords }),
+        ...(focusKeyword !== undefined && { focusKeyword }),
+        ...(readingTime !== undefined && { readingTime }),
         updatedAt: new Date(),
       },
       include: {
         productReviews: true,
+        featuredProducts: true,
       },
     })
 

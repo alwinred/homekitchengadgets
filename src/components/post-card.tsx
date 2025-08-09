@@ -1,6 +1,7 @@
 import Link from 'next/link'
 import { formatDate } from '@/lib/utils'
 import { Card, CardContent, CardDescription, CardTitle } from '@/components/ui/card'
+import HeroImage from '@/components/hero-image'
 
 interface PostCardProps {
   post: {
@@ -18,7 +19,7 @@ export function PostCard({ post }: PostCardProps) {
     <Card className="overflow-hidden hover:shadow-lg transition-shadow">
       <Link href={`/posts/${post.slug}`}>
         <div className="relative h-48 w-full">
-          <img
+          <HeroImage
             src={post.heroImage}
             alt={post.title}
             className="w-full h-full object-cover"

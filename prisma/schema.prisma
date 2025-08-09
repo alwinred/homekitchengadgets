@@ -67,6 +67,14 @@ model Post {
   content          String
   heroImage        String
   status           PostStatus        @default(DRAFT)
+  
+  // SEO Fields
+  seoTitle         String?           // Custom SEO title (60 chars max recommended)
+  seoDescription   String?           // Meta description (160 chars max recommended)
+  seoKeywords      String?           // Keywords separated by commas
+  focusKeyword     String?           // Primary focus keyword for SEO
+  readingTime      Int?              // Estimated reading time in minutes
+  
   createdAt        DateTime          @default(now())
   updatedAt        DateTime          @updatedAt
   productReviews   ProductReview[]

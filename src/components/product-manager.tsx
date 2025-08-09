@@ -130,9 +130,9 @@ export function ProductManager({ postId, products, onProductsChange, readonly = 
       <CardHeader>
         <div className="flex items-center justify-between">
           <div>
-            <CardTitle>🛍️ Featured Products</CardTitle>
+            <CardTitle>📝 Related Reviews</CardTitle>
             <CardDescription>
-              Manage products that appear in the &quot;Featured Products&quot; section
+              Manage detailed product reviews that appear in the &quot;Related Reviews&quot; section
             </CardDescription>
           </div>
           {!readonly && (

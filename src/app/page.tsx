@@ -2,6 +2,7 @@ import Link from 'next/link'
 import { Button } from '@/components/ui/button'
 import { PostCard } from '@/components/post-card'
 import { prisma } from '@/lib/prisma'
+import HeroImage from '@/components/hero-image'
 
 export default async function Home() {
   // Get featured post (most recent published post)
@@ -52,7 +53,7 @@ export default async function Home() {
           <h2 className="text-3xl font-bold mb-6">Featured Article</h2>
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 items-center bg-card rounded-xl p-8 shadow-lg">
             <div>
-              <img
+              <HeroImage
                 src={featuredPost.heroImage}
                 alt={featuredPost.title}
                 className="w-full h-64 lg:h-80 object-cover rounded-lg"

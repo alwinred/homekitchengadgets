@@ -25,8 +25,9 @@ Requirements:
 - DO NOT include any images, image tags, or image URLs in the content
 - Focus on text content only - product images will be added separately
 
-Format the response in Markdown, using proper headings, subheadings, and formatting.
+Format the response in HTML, using proper HTML tags for headings (<h1>, <h2>, <h3>), paragraphs (<p>), lists (<ul>, <li>), and emphasis (<strong>, <em>).
 Use text descriptions instead of images for products.
+Use clean, semantic HTML without CSS classes or styling attributes.
 
 After writing the article, also provide:
 1. An SEO-optimized title (max 60 characters)

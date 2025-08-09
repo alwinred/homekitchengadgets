@@ -37,7 +37,13 @@ export default function EditPostPage({ params }: EditPostPageProps) {
     excerpt: '',
     content: '',
     heroImage: '',
-    status: 'DRAFT' as PostStatus
+    status: 'DRAFT' as PostStatus,
+    // SEO Fields
+    seoTitle: '',
+    seoDescription: '',
+    seoKeywords: '',
+    focusKeyword: '',
+    readingTime: 0
   })
   const router = useRouter()
 
@@ -59,7 +65,13 @@ export default function EditPostPage({ params }: EditPostPageProps) {
         excerpt: postData.excerpt,
         content: postData.content,
         heroImage: postData.heroImage,
-        status: postData.status
+        status: postData.status,
+        // SEO Fields
+        seoTitle: postData.seoTitle || '',
+        seoDescription: postData.seoDescription || '',
+        seoKeywords: postData.seoKeywords || '',
+        focusKeyword: postData.focusKeyword || '',
+        readingTime: postData.readingTime || 0
       })
       
       // Convert ProductReview to ManagedProduct format
@@ -126,10 +138,24 @@ export default function EditPostPage({ params }: EditPostPageProps) {
     }
   }
 
-  const handleInputChange = (field: keyof typeof formData, value: string) => {
-    setFormData(prev => ({ ...prev, [field]: value }))
-    
+  // Calculate reading time based on content (average 200 words per minute)
+  const calculateReadingTime = (content: string): number => {
+    const text = content.replace(/<[^>]*>/g, '') // Remove HTML tags
+    const wordCount = text.split(/\s+/).filter(word => word.length > 0).length
+    return Math.ceil(wordCount / 200)
+  }
 
+  const handleInputChange = (field: keyof typeof formData, value: string) => {
+    setFormData(prev => {
+      const newData = { ...prev, [field]: value }
+      
+      // Auto-calculate reading time when content changes
+      if (field === 'content') {
+        newData.readingTime = calculateReadingTime(value)
+      }
+      
+      return newData
+    })
   }
 
   if (loading) {
@@ -221,6 +247,98 @@ export default function EditPostPage({ params }: EditPostPageProps) {
                     placeholder="https://example.com/image.jpg"
                     required
                   />
+                </div>
+              </CardContent>
+            </Card>
+
+            {/* SEO Settings */}
+            <Card>
+              <CardHeader>
+                <CardTitle>SEO Settings</CardTitle>
+                <CardDescription>
+                  Optimize your post for search engines and social media sharing
+                </CardDescription>
+              </CardHeader>
+              <CardContent className="space-y-4">
+                <div>
+                  <label htmlFor="seoTitle" className="block text-sm font-medium mb-2">
+                    SEO Title
+                    <span className="text-muted-foreground ml-1">(60 characters recommended)</span>
+                  </label>
+                  <Input
+                    id="seoTitle"
+                    value={formData.seoTitle}
+                    onChange={(e) => handleInputChange('seoTitle', e.target.value)}
+                    placeholder="Custom title for search engines"
+                    maxLength={60}
+                  />
+                  <div className="text-right text-xs text-muted-foreground mt-1">
+                    {formData.seoTitle.length}/60 characters
+                  </div>
+                </div>
+
+                <div>
+                  <label htmlFor="seoDescription" className="block text-sm font-medium mb-2">
+                    Meta Description
+                    <span className="text-muted-foreground ml-1">(160 characters recommended)</span>
+                  </label>
+                  <Textarea
+                    id="seoDescription"
+                    value={formData.seoDescription}
+                    onChange={(e) => handleInputChange('seoDescription', e.target.value)}
+                    placeholder="Description that appears in search results"
+                    maxLength={160}
+                    rows={3}
+                  />
+                  <div className="text-right text-xs text-muted-foreground mt-1">
+                    {formData.seoDescription.length}/160 characters
+                  </div>
+                </div>
+
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                  <div>
+                    <label htmlFor="focusKeyword" className="block text-sm font-medium mb-2">
+                      Focus Keyword
+                    </label>
+                    <Input
+                      id="focusKeyword"
+                      value={formData.focusKeyword}
+                      onChange={(e) => handleInputChange('focusKeyword', e.target.value)}
+                      placeholder="Primary keyword to target"
+                    />
+                  </div>
+
+                  <div>
+                    <label htmlFor="readingTime" className="block text-sm font-medium mb-2">
+                      Reading Time (minutes)
+                    </label>
+                    <Input
+                      id="readingTime"
+                      type="number"
+                      min="1"
+                      max="60"
+                      value={formData.readingTime}
+                      onChange={(e) => handleInputChange('readingTime', parseInt(e.target.value) || 0)}
+                      placeholder="Estimated reading time"
+                    />
+                  </div>
+                </div>
+
+                <div>
+                  <label htmlFor="seoKeywords" className="block text-sm font-medium mb-2">
+                    SEO Keywords
+                    <span className="text-muted-foreground ml-1">(comma separated)</span>
+                  </label>
+                  <Textarea
+                    id="seoKeywords"
+                    value={formData.seoKeywords}
+                    onChange={(e) => handleInputChange('seoKeywords', e.target.value)}
+                    placeholder="keyword1, keyword2, keyword3"
+                    rows={2}
+                  />
+                  <div className="text-xs text-muted-foreground mt-1">
+                    Use relevant keywords that people might search for. Separate with commas.
+                  </div>
                 </div>
               </CardContent>
             </Card>

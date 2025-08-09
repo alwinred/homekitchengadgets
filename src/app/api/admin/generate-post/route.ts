@@ -90,7 +90,7 @@ export async function POST(request: NextRequest) {
             productLink: product.link,
             rating: review.rating,
             reviewContent: review.reviewContent,
-            status: 'REVIEW',
+            status: 'PUBLISHED',
             postId: post.id,
           },
         })
