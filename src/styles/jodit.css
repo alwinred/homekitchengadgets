@@ -1,0 +1,167 @@
+/* Jodit Editor Styles */
+
+/* Make sure Jodit content inherits theme colors */
+.jodit-workplace .jodit-wysiwyg {
+  color: var(--foreground) !important;
+  background-color: var(--background) !important;
+  border: 1px solid var(--border) !important;
+  border-radius: 0.375rem;
+}
+
+/* Style the editor content */
+.jodit-workplace .jodit-wysiwyg h1,
+.jodit-workplace .jodit-wysiwyg h2,
+.jodit-workplace .jodit-wysiwyg h3,
+.jodit-workplace .jodit-wysiwyg h4,
+.jodit-workplace .jodit-wysiwyg h5,
+.jodit-workplace .jodit-wysiwyg h6 {
+  color: var(--primary) !important;
+  font-weight: bold;
+  margin-top: 1.5rem;
+  margin-bottom: 0.75rem;
+}
+
+.jodit-workplace .jodit-wysiwyg h1 {
+  font-size: 2rem;
+  line-height: 2.5rem;
+}
+
+.jodit-workplace .jodit-wysiwyg h2 {
+  font-size: 1.75rem;
+  line-height: 2.25rem;
+}
+
+.jodit-workplace .jodit-wysiwyg h3 {
+  font-size: 1.5rem;
+  line-height: 2rem;
+}
+
+.jodit-workplace .jodit-wysiwyg p {
+  color: var(--foreground) !important;
+  margin-bottom: 1rem;
+  line-height: 1.7;
+}
+
+.jodit-workplace .jodit-wysiwyg ul,
+.jodit-workplace .jodit-wysiwyg ol {
+  margin-bottom: 1rem;
+  padding-left: 1.5rem;
+}
+
+.jodit-workplace .jodit-wysiwyg ul li,
+.jodit-workplace .jodit-wysiwyg ol li {
+  color: var(--foreground) !important;
+  margin-bottom: 0.25rem;
+}
+
+.jodit-workplace .jodit-wysiwyg strong {
+  color: var(--foreground) !important;
+  font-weight: 600;
+}
+
+.jodit-workplace .jodit-wysiwyg em {
+  color: var(--foreground) !important;
+}
+
+.jodit-workplace .jodit-wysiwyg a {
+  color: var(--primary) !important;
+  text-decoration: underline;
+}
+
+.jodit-workplace .jodit-wysiwyg blockquote {
+  border-left: 4px solid var(--primary);
+  padding-left: 1rem;
+  margin: 1.5rem 0;
+  font-style: italic;
+  color: var(--muted-foreground) !important;
+}
+
+.jodit-workplace .jodit-wysiwyg code {
+  background-color: var(--muted) !important;
+  color: var(--foreground) !important;
+  padding: 0.125rem 0.375rem;
+  border-radius: 0.25rem;
+  font-family: ui-monospace, 'Cascadia Code', 'Segoe UI Mono', monospace;
+  font-size: 0.875rem;
+}
+
+.jodit-workplace .jodit-wysiwyg pre {
+  background-color: var(--muted) !important;
+  color: var(--foreground) !important;
+  padding: 1rem;
+  border-radius: 0.5rem;
+  margin: 1rem 0;
+  overflow-x: auto;
+}
+
+.jodit-workplace .jodit-wysiwyg table {
+  border-collapse: collapse;
+  width: 100%;
+  margin: 1rem 0;
+}
+
+.jodit-workplace .jodit-wysiwyg table td,
+.jodit-workplace .jodit-wysiwyg table th {
+  border: 1px solid var(--border);
+  padding: 0.5rem;
+  color: var(--foreground) !important;
+}
+
+.jodit-workplace .jodit-wysiwyg table th {
+  background-color: var(--muted) !important;
+  font-weight: 600;
+}
+
+/* Toolbar styling */
+.jodit-toolbar-button {
+  background-color: var(--background) !important;
+  border: 1px solid var(--border) !important;
+  color: var(--foreground) !important;
+}
+
+.jodit-toolbar-button:hover {
+  background-color: var(--muted) !important;
+}
+
+.jodit-toolbar-button.jodit-toolbar-button_active {
+  background-color: var(--primary) !important;
+  color: var(--primary-foreground) !important;
+}
+
+/* Make sure the editor container has proper styling */
+.jodit-container {
+  border: 1px solid var(--border) !important;
+  border-radius: 0.5rem;
+  overflow: hidden;
+}
+
+.jodit-toolbar {
+  background-color: var(--muted) !important;
+  border-bottom: 1px solid var(--border) !important;
+}
+
+/* Content display in blog posts */
+.prose h1, .prose h2, .prose h3, .prose h4, .prose h5, .prose h6 {
+  color: hsl(var(--primary)) !important;
+}
+
+.prose p, .prose li, .prose span {
+  color: hsl(var(--foreground)) !important;
+}
+
+.prose strong {
+  color: hsl(var(--foreground)) !important;
+}
+
+.prose a {
+  color: hsl(var(--primary)) !important;
+}
+
+.prose blockquote {
+  color: hsl(var(--muted-foreground)) !important;
+}
+
+.prose code {
+  background-color: hsl(var(--muted)) !important;
+  color: hsl(var(--foreground)) !important;
+}
