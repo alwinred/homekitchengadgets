@@ -54,7 +54,7 @@ export default async function AdminDashboard() {
           </p>
         </div>
         <Link href="/admin/generate">
-          <Button size="lg" className="gap-2">
+          <Button size="lg" className="gap-2 whitespace-nowrap">
             <PlusCircle className="h-5 w-5" />
             Generate New Post
           </Button>

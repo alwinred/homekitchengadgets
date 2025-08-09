@@ -85,17 +85,16 @@ export function ProductShowcase({ content, featuredProducts = [] }: ProductShowc
                 {product.description}
               </p>
               
-              <div className="flex items-center justify-between">
-                <span className="text-lg font-bold text-primary">
+              <div className="flex items-center justify-between gap-4">
+                <span className="text-base font-bold text-primary">
                   {product.price}
                 </span>
                 <a 
                   href={product.amazonLink}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="inline-flex items-center gap-2 bg-orange-500 hover:bg-orange-600 text-white px-4 py-2 rounded-md text-sm font-medium transition-colors"
+                  className="bg-orange-500 hover:bg-orange-600 text-white px-3 py-2 rounded-md text-sm font-medium transition-colors whitespace-nowrap flex-shrink-0"
                 >
-                  <ExternalLink className="h-4 w-4" />
                   View on Amazon
                 </a>
               </div>

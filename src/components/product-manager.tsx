@@ -136,7 +136,7 @@ export function ProductManager({ postId, products, onProductsChange, readonly = 
             </CardDescription>
           </div>
           {!readonly && (
-            <Button onClick={handleAddNew} disabled={!!editingProduct} className="gap-2">
+            <Button onClick={handleAddNew} disabled={!!editingProduct} className="gap-2 whitespace-nowrap">
               <Plus className="h-4 w-4" />
               Add Product
             </Button>

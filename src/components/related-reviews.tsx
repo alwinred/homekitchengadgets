@@ -76,7 +76,7 @@ export function RelatedReviews({ reviews }: RelatedReviewsProps) {
                   href={review.productLink}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="inline-flex items-center gap-2 bg-blue-500 hover:bg-blue-600 text-white px-4 py-2 rounded-md text-sm font-medium transition-colors"
+                  className="inline-flex items-center gap-2 bg-blue-500 hover:bg-blue-600 text-white px-3 py-2 rounded-md text-sm font-medium transition-colors whitespace-nowrap flex-shrink-0"
                 >
                   <ExternalLink className="h-4 w-4" />
                   View Product

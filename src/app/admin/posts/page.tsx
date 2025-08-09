@@ -110,7 +110,7 @@ export default function AdminPostsPage() {
           </p>
         </div>
         <Link href="/admin/generate">
-          <Button className="gap-2">
+          <Button className="gap-2 whitespace-nowrap">
             <Plus className="h-4 w-4" />
             Generate New Post
           </Button>
