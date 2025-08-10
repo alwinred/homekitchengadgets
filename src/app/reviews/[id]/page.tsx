@@ -5,6 +5,35 @@ import { Card, CardContent } from '@/components/ui/card'
 import { Star, ExternalLink, ArrowLeft, Calendar, Clock } from 'lucide-react'
 import Link from 'next/link'
 
+// Markdown to HTML conversion function
+function markdownToHtml(markdown: string): string {
+  return markdown
+    .replace(/\*\*(.*?)\*\*/g, '<strong>$1</strong>')
+    .replace(/\*(.*?)\*/g, '<em>$1</em>')
+    .replace(/^### (.*$)/gm, '<h3>$1</h3>')
+    .replace(/^## (.*$)/gm, '<h2>$1</h2>')
+    .replace(/^# (.*$)/gm, '<h1>$1</h1>')
+    .replace(/^- (.*$)/gm, '<li>$1</li>')
+    .replace(/^(\\d+)\\. (.*$)/gm, '<li>$2</li>')
+    .split('\n\n')
+    .map(paragraph => {
+      if (paragraph.includes('<h') || paragraph.includes('<li>')) {
+        return paragraph;
+      }
+      if (paragraph.includes('<li>')) {
+        return '<ul>' + paragraph + '</ul>';
+      }
+      return paragraph ? `<p>${paragraph}</p>` : '';
+    })
+    .join('')
+    .replace(/<li>/g, '<ul><li>')
+    .replace(/<\/li>(?!\s*<li>)/g, '</li></ul>')
+    .replace(/<\/ul>\s*<ul>/g, '')
+    .replace(/<p><\/p>/g, '')
+    .replace(/<p>(<h[1-6]>)/g, '$1')
+    .replace(/(<\/h[1-6]>)<\/p>/g, '$1');
+}
+
 interface ReviewPageProps {
   params: Promise<{ id: string }>
 }
@@ -178,9 +207,12 @@ export default async function ReviewPage({ params }: ReviewPageProps) {
 
             {/* Review Content */}
             <article className="prose prose-lg max-w-none">
-              <div className="text-lg leading-relaxed whitespace-pre-wrap">
-                {review.reviewContent}
-              </div>
+              <div 
+                className="text-lg leading-relaxed"
+                dangerouslySetInnerHTML={{ 
+                  __html: markdownToHtml(review.reviewContent) 
+                }}
+              />
             </article>
 
             {/* Related Post */}
