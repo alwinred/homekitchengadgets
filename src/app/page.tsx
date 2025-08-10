@@ -4,6 +4,7 @@ import { PostCard } from '@/components/post-card'
 import { ReviewCard } from '@/components/review-card'
 import { prisma } from '@/lib/prisma'
 import HeroImage from '@/components/hero-image'
+import { AdSenseAd } from '@/components/adsense-ad'
 
 export default async function Home() {
   // Get featured post (most recent published post)
@@ -93,6 +94,9 @@ export default async function Home() {
         </section>
       )}
 
+      {/* AdSense Ad Unit - Between Featured Article and Latest Articles */}
+      <AdSenseAd adSlot="homepage-between-featured-latest" />
+
       {/* Recent Posts */}
       <section id="recent-posts">
         <h2 className="text-3xl font-bold mb-6">Latest Articles</h2>
@@ -123,6 +127,9 @@ export default async function Home() {
         )}
       </section>
 
+      {/* AdSense Ad Unit - Between Latest Articles and Latest Reviews */}
+      <AdSenseAd adSlot="homepage-between-articles-reviews" />
+
       {/* Latest Reviews */}
       <section id="latest-reviews" className="mt-16">
         <h2 className="text-3xl font-bold mb-6">Latest Reviews</h2>
@@ -152,6 +159,9 @@ export default async function Home() {
           </div>
         )}
       </section>
+
+      {/* AdSense Ad Unit - Below Latest Reviews */}
+      <AdSenseAd adSlot="homepage-below-reviews" />
 
       {/* Call to Action */}
       <section className="text-center py-16 mt-16 bg-primary/5 rounded-2xl">
