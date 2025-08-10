@@ -1,5 +1,5 @@
 import Link from 'next/link'
-import { FileText, Star, Facebook, Twitter, Instagram } from 'lucide-react'
+import { FileText, Star, Facebook, Twitter, Instagram, Home, FileText as FileTextIcon, Shield } from 'lucide-react'
 
 export function Footer() {
   return (
@@ -65,6 +65,7 @@ export function Footer() {
                   href="/" 
                   className="text-muted-foreground hover:text-primary transition-colors flex items-center gap-2"
                 >
+                  <Home className="h-4 w-4" />
                   Home
                 </Link>
               </li>
@@ -96,16 +97,18 @@ export function Footer() {
               <li>
                 <Link 
                   href="/terms" 
-                  className="text-muted-foreground hover:text-primary transition-colors"
+                  className="text-muted-foreground hover:text-primary transition-colors flex items-center gap-2"
                 >
+                  <FileTextIcon className="h-4 w-4" />
                   Terms of Use
                 </Link>
               </li>
               <li>
                 <Link 
                   href="/privacy" 
-                  className="text-muted-foreground hover:text-primary transition-colors"
+                  className="text-muted-foreground hover:text-primary transition-colors flex items-center gap-2"
                 >
+                  <Shield className="h-4 w-4" />
                   Privacy Policy
                 </Link>
               </li>
