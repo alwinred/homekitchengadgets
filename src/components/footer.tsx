@@ -1,5 +1,5 @@
 import Link from 'next/link'
-import { FileText, Star, Facebook, Twitter, Instagram, Home, FileText as FileTextIcon, Shield } from 'lucide-react'
+import { FileText, Star, Facebook, Twitter, Instagram, Home, FileText as FileTextIcon, Shield, Mail } from 'lucide-react'
 
 export function Footer() {
   return (
@@ -85,6 +85,15 @@ export function Footer() {
                 >
                   <Star className="h-4 w-4" />
                   Reviews
+                </Link>
+              </li>
+              <li>
+                <Link 
+                  href="/contact" 
+                  className="text-muted-foreground hover:text-primary transition-colors flex items-center gap-2"
+                >
+                  <Mail className="h-4 w-4" />
+                  Contact
                 </Link>
               </li>
             </ul>
