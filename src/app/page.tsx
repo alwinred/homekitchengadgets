@@ -12,14 +12,14 @@ export default async function Home() {
     select: { id: true, slug: true, title: true, excerpt: true, heroImage: true, createdAt: true },
   })
 
-  // Get recent posts (excluding featured post)
+  // Get recent posts (excluding featured post) - 4 per row, max 3 rows = 12 posts
   const recentPosts = await prisma.post.findMany({
     where: { 
       status: 'PUBLISHED',
       ...(featuredPost && { id: { not: featuredPost.id } })
     },
     orderBy: { createdAt: 'desc' },
-    take: 6,
+    take: 12,
     select: { id: true, slug: true, title: true, excerpt: true, heroImage: true, createdAt: true },
   })
 
@@ -80,11 +80,20 @@ export default async function Home() {
       <section id="recent-posts">
         <h2 className="text-3xl font-bold mb-6">Latest Articles</h2>
         {recentPosts.length > 0 ? (
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-            {recentPosts.map((post) => (
-              <PostCard key={post.id} post={post} />
-            ))}
-          </div>
+          <>
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
+              {recentPosts.map((post) => (
+                <PostCard key={post.id} post={post} />
+              ))}
+            </div>
+            <div className="text-center mt-8">
+              <Link href="/posts">
+                <Button size="lg" variant="outline">
+                  View All Articles
+                </Button>
+              </Link>
+            </div>
+          </>
         ) : (
           <div className="text-center py-12">
             <p className="text-muted-foreground text-lg mb-4">

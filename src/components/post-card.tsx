@@ -18,7 +18,7 @@ export function PostCard({ post }: PostCardProps) {
   return (
     <Card className="overflow-hidden hover:shadow-lg transition-shadow">
       <Link href={`/posts/${post.slug}`}>
-        <div className="relative h-48 w-full">
+        <div className="relative aspect-[4/3] w-full">
           <HeroImage
             src={post.heroImage}
             alt={post.title}
