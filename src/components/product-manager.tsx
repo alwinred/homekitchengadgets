@@ -68,7 +68,9 @@ export function ProductManager({ postId, products, onProductsChange, readonly = 
   }
 
   const handleEdit = (product: ManagedProduct) => {
-    setEditingProduct({ ...product })
+    // Convert markdown to HTML when editing
+    const htmlContent = markdownToHtml(product.reviewContent)
+    setEditingProduct({ ...product, reviewContent: htmlContent })
     setIsAddingNew(false)
   }
 
