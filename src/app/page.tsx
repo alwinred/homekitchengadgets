@@ -1,6 +1,7 @@
 import Link from 'next/link'
 import { Button } from '@/components/ui/button'
 import { PostCard } from '@/components/post-card'
+import { ReviewCard } from '@/components/review-card'
 import { prisma } from '@/lib/prisma'
 import HeroImage from '@/components/hero-image'
 
@@ -21,6 +22,22 @@ export default async function Home() {
     orderBy: { createdAt: 'desc' },
     take: 12,
     select: { id: true, slug: true, title: true, excerpt: true, heroImage: true, createdAt: true },
+  })
+
+  // Get recent reviews - 4 per row, max 3 rows = 12 reviews
+  const recentReviews = await prisma.productReview.findMany({
+    where: { status: 'PUBLISHED' },
+    orderBy: { createdAt: 'desc' },
+    take: 12,
+    select: { 
+      id: true, 
+      productTitle: true, 
+      productImage: true, 
+      productLink: true, 
+      rating: true, 
+      reviewContent: true, 
+      createdAt: true 
+    },
   })
 
   return (
@@ -101,6 +118,36 @@ export default async function Home() {
             </p>
             <p className="text-sm text-muted-foreground">
               Check back soon for amazing content!
+            </p>
+          </div>
+        )}
+      </section>
+
+      {/* Latest Reviews */}
+      <section id="latest-reviews" className="mt-16">
+        <h2 className="text-3xl font-bold mb-6">Latest Reviews</h2>
+        {recentReviews.length > 0 ? (
+          <>
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
+              {recentReviews.map((review) => (
+                <ReviewCard key={review.id} review={review} />
+              ))}
+            </div>
+            <div className="text-center mt-8">
+              <Link href="/reviews">
+                <Button size="lg" variant="outline">
+                  View All Reviews
+                </Button>
+              </Link>
+            </div>
+          </>
+        ) : (
+          <div className="text-center py-12">
+            <p className="text-muted-foreground text-lg mb-4">
+              No reviews published yet.
+            </p>
+            <p className="text-sm text-muted-foreground">
+              Check back soon for amazing product reviews!
             </p>
           </div>
         )}
