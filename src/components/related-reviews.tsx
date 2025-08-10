@@ -74,7 +74,7 @@ export function RelatedReviews({ reviews }: RelatedReviewsProps) {
                   href={`/reviews/${review.id}`}
                   className="flex-1"
                 >
-                  <button className="w-full bg-blue-600 hover:bg-blue-700 text-white px-4 py-2 rounded-md text-sm font-medium transition-colors whitespace-nowrap">
+                  <button className="w-full border border-input bg-background hover:bg-accent hover:text-accent-foreground text-foreground px-4 py-2 rounded-md text-sm font-medium transition-colors whitespace-nowrap">
                     Read Review
                   </button>
                 </a>
