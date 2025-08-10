@@ -4,13 +4,6 @@ import Link from 'next/link'
 import { useSession, signOut } from 'next-auth/react'
 import { Button } from '@/components/ui/button'
 import { 
-  DropdownMenu, 
-  DropdownMenuContent, 
-  DropdownMenuItem, 
-  DropdownMenuSeparator, 
-  DropdownMenuTrigger 
-} from '@/components/ui/dropdown-menu'
-import { 
   Sheet, 
   SheetContent, 
   SheetHeader, 
@@ -66,70 +59,36 @@ export function Navigation() {
               <Star className="h-4 w-4" />
               Reviews
             </Link>
-          </div>
-          
-          {/* Desktop Admin Dropdown */}
-          <div className="hidden md:flex items-center">
-            <DropdownMenu>
-              <DropdownMenuTrigger asChild>
+            
+            {/* Desktop Sign In/Out Buttons */}
+            {session?.user ? (
+              <div className="flex items-center space-x-2">
+                {session.user.role === 'ADMIN' && (
+                  <Link href="/admin">
+                    <Button variant="ghost" size="sm" className="flex items-center gap-2">
+                      <Settings className="h-4 w-4" />
+                      Admin
+                    </Button>
+                  </Link>
+                )}
+                <Button 
+                  variant="ghost" 
+                  size="sm" 
+                  onClick={handleSignOut}
+                  className="flex items-center gap-2 text-red-600 hover:text-red-600"
+                >
+                  <LogOut className="h-4 w-4" />
+                  Sign Out
+                </Button>
+              </div>
+            ) : (
+              <Link href="/auth/signin">
                 <Button variant="ghost" size="sm" className="flex items-center gap-2">
                   <User className="h-4 w-4" />
-                  {session?.user ? session.user.name || 'Admin' : 'Account'}
+                  Sign In
                 </Button>
-              </DropdownMenuTrigger>
-              <DropdownMenuContent align="end" className="w-48">
-                {session?.user ? (
-                  <>
-                    <DropdownMenuItem asChild>
-                      <Link href="/" className="flex items-center gap-2">
-                        <Home className="h-4 w-4" />
-                        Home
-                      </Link>
-                    </DropdownMenuItem>
-                    <DropdownMenuItem asChild>
-                      <Link href="/posts" className="flex items-center gap-2">
-                        <FileText className="h-4 w-4" />
-                        Articles
-                      </Link>
-                    </DropdownMenuItem>
-                    <DropdownMenuItem asChild>
-                      <Link href="/reviews" className="flex items-center gap-2">
-                        <Star className="h-4 w-4" />
-                        Reviews
-                      </Link>
-                    </DropdownMenuItem>
-                    {session.user.role === 'ADMIN' && (
-                      <>
-                        <DropdownMenuSeparator />
-                        <DropdownMenuItem asChild>
-                          <Link href="/admin" className="flex items-center gap-2">
-                            <Settings className="h-4 w-4" />
-                            Admin Panel
-                          </Link>
-                        </DropdownMenuItem>
-                      </>
-                    )}
-                    <DropdownMenuSeparator />
-                    <DropdownMenuItem 
-                      onClick={handleSignOut}
-                      className="flex items-center gap-2 text-red-600 focus:text-red-600"
-                    >
-                      <LogOut className="h-4 w-4" />
-                      Sign Out
-                    </DropdownMenuItem>
-                  </>
-                ) : (
-                  <>
-                    <DropdownMenuItem asChild>
-                      <Link href="/auth/signin" className="flex items-center gap-2">
-                        <User className="h-4 w-4" />
-                        Sign In
-                      </Link>
-                    </DropdownMenuItem>
-                  </>
-                )}
-              </DropdownMenuContent>
-            </DropdownMenu>
+              </Link>
+            )}
           </div>
 
           {/* Mobile Hamburger Menu */}
