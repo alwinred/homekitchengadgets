@@ -162,19 +162,6 @@ export default async function Home() {
 
       {/* AdSense Ad Unit - Below Latest Reviews */}
       <AdSenseAd adSlot="homepage-below-reviews" />
-
-      {/* Call to Action */}
-      <section className="text-center py-16 mt-16 bg-primary/5 rounded-2xl">
-        <h2 className="text-3xl font-bold mb-4">Stay Updated</h2>
-        <p className="text-muted-foreground mb-6 max-w-lg mx-auto">
-          Get the latest product reviews and tech insights delivered to your inbox.
-        </p>
-        <Link href="/reviews">
-          <Button size="lg">
-            Explore All Reviews
-          </Button>
-        </Link>
-      </section>
     </div>
   )
 }
