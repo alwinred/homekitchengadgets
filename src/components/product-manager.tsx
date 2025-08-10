@@ -5,6 +5,7 @@ import { Button } from './ui/button'
 import { Input } from './ui/input'
 import { Textarea } from './ui/textarea'
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from './ui/card'
+import { JoditWysiwygEditor } from './jodit-editor'
 import { Trash2, Plus, Edit2, Save, X, Star } from 'lucide-react'
 
 // Markdown to HTML conversion function for admin display
@@ -244,12 +245,10 @@ export function ProductManager({ postId, products, onProductsChange, readonly = 
                 <label className="block text-sm font-medium mb-2">
                   Review Content *
                 </label>
-                <Textarea
+                <JoditWysiwygEditor
                   value={editingProduct.reviewContent}
-                  onChange={(e) => updateEditingProduct('reviewContent', e.target.value)}
+                  onChange={(value) => updateEditingProduct('reviewContent', value)}
                   placeholder="Write a detailed review with pros, cons, and verdict..."
-                  rows={4}
-                  required
                 />
               </div>
 
