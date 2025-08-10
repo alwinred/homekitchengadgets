@@ -3,6 +3,7 @@ import { Geist, Geist_Mono } from "next/font/google";
 import { SessionProvider } from "@/components/session-provider";
 import { Navigation } from "@/components/navigation";
 import { Footer } from "@/components/footer";
+import { AdSenseScript } from "@/components/adsense-script";
 import "./globals.css";
 import "../styles/jodit.css";
 
@@ -46,6 +47,7 @@ export default function RootLayout({
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}
       >
+        <AdSenseScript />
         <SessionProvider>
           <Navigation />
           <main className="min-h-screen">

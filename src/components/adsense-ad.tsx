@@ -1,5 +1,7 @@
 'use client'
 
+import { useEffect } from 'react'
+
 interface AdSenseAdProps {
   className?: string
   adSlot?: string
@@ -13,6 +15,17 @@ export function AdSenseAd({
   adFormat = 'auto',
   style = {}
 }: AdSenseAdProps) {
+  useEffect(() => {
+    // Only run on client side
+    if (typeof window !== 'undefined' && window.adsbygoogle) {
+      try {
+        (window.adsbygoogle = window.adsbygoogle || []).push({});
+      } catch (error) {
+        console.error('AdSense error:', error);
+      }
+    }
+  }, [adSlot]);
+
   return (
     <div className={`my-8 ${className}`} style={style}>
       {/* Google AdSense Responsive Ad Unit */}
@@ -24,9 +37,6 @@ export function AdSenseAd({
         data-ad-format={adFormat}
         data-full-width-responsive="true"
       />
-      <script>
-        (adsbygoogle = window.adsbygoogle || []).push({});
-      </script>
       
       {/* Fallback placeholder for development/testing */}
       <div className="bg-muted/50 border-2 border-dashed border-muted-foreground/20 rounded-lg p-6 text-center">
