@@ -68,18 +68,26 @@ export function RelatedReviews({ reviews }: RelatedReviewsProps) {
                 {review.reviewContent}
               </p>
               
-              <div className="flex items-center justify-between">
-                <span className="text-sm font-medium text-primary">
-                  Detailed Review
-                </span>
-                <a 
+              {/* Two Buttons Side by Side */}
+              <div className="flex gap-2">
+                <a
+                  href={`/reviews/${review.id}`}
+                  className="flex-1"
+                >
+                  <button className="w-full bg-blue-600 hover:bg-blue-700 text-white px-4 py-2 rounded-md text-sm font-medium transition-colors whitespace-nowrap">
+                    Read Review
+                  </button>
+                </a>
+
+                <a
                   href={review.productLink}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="inline-flex items-center gap-2 bg-blue-500 hover:bg-blue-600 text-white px-3 py-2 rounded-md text-sm font-medium transition-colors whitespace-nowrap flex-shrink-0"
+                  className="flex-1"
                 >
-                  <ExternalLink className="h-4 w-4" />
-                  View Product
+                  <button className="w-full bg-orange-500 hover:bg-orange-600 text-white px-4 py-2 rounded-md text-sm font-medium transition-colors whitespace-nowrap">
+                    View on Amazon
+                  </button>
                 </a>
               </div>
             </CardContent>
