@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
 import { SessionProvider } from "@/components/session-provider";
 import { Navigation } from "@/components/navigation";
+import { Footer } from "@/components/footer";
 import "./globals.css";
 import "../styles/jodit.css";
 
@@ -50,6 +51,7 @@ export default function RootLayout({
           <main className="min-h-screen">
             {children}
           </main>
+          <Footer />
         </SessionProvider>
       </body>
     </html>
