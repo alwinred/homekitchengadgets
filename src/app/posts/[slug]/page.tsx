@@ -6,6 +6,7 @@ import { formatDate } from '@/lib/utils'
 import { ReviewCard } from '@/components/review-card'
 import { ProductShowcase } from '@/components/product-showcase'
 import { RelatedReviews } from '@/components/related-reviews'
+import { AdSenseAd } from '@/components/adsense-ad'
 import HeroImage from '@/components/hero-image'
 
 interface PostPageProps {
@@ -263,6 +264,9 @@ export default async function PostPage({ params }: PostPageProps) {
               </div>
             </div>
           )}
+          
+          {/* AdSense Ad Unit 1: After Related Topics */}
+          <AdSenseAd adSlot="article-top-after-topics" />
         </header>
 
         {/* Article Content */}
@@ -270,6 +274,9 @@ export default async function PostPage({ params }: PostPageProps) {
           className="prose prose-lg max-w-none mb-12 prose-headings:text-primary prose-p:text-foreground prose-p:leading-relaxed prose-strong:text-foreground prose-li:text-foreground prose-a:text-primary prose-a:hover:underline prose-blockquote:border-l-4 prose-blockquote:border-primary prose-blockquote:italic prose-blockquote:text-muted-foreground prose-code:bg-muted prose-code:px-2 prose-code:py-1 prose-code:rounded prose-code:text-sm"
           dangerouslySetInnerHTML={{ __html: post.content }}
         />
+        
+        {/* AdSense Ad Unit 2: Before Conclusion */}
+        <AdSenseAd adSlot="article-before-conclusion" />
 
                        {/* Product Showcase - Shows both manually curated and auto-detected products */}
                <ProductShowcase 
@@ -280,15 +287,8 @@ export default async function PostPage({ params }: PostPageProps) {
                  }))}
                />
 
-        {/* Google AdSense Placeholder */}
-        <div className="bg-muted/50 border-2 border-dashed border-muted-foreground/20 rounded-lg p-8 text-center mb-12">
-          <p className="text-muted-foreground">
-            Google AdSense Ad Space
-          </p>
-          <p className="text-sm text-muted-foreground mt-2">
-            Replace this with your actual AdSense code
-          </p>
-        </div>
+        {/* AdSense Ad Unit 3: Between Featured Products and Related Reviews */}
+        <AdSenseAd adSlot="article-between-products-reviews" />
 
         {/* Related Reviews */}
         <RelatedReviews reviews={post.productReviews} />
