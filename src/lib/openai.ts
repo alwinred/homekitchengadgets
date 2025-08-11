@@ -86,7 +86,7 @@ You are an expert content writer specializing in SEO-optimized product roundups 
 Write a detailed, engaging, and helpful review for the product "${productTitle}"${productDescription ? ` (${productDescription})` : ''} that provides real value to the reader.
 
 Requirements:
-- Write a 200-300 word review with pros, cons, and a verdict
+- Write a 500-800 word review with pros, cons, and a verdict
 - Use a friendly but professional tone
 - Include specific details about features, quality, and value
 - Be honest and balanced in your assessment

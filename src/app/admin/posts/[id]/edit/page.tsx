@@ -145,13 +145,13 @@ export default function EditPostPage({ params }: EditPostPageProps) {
     return Math.ceil(wordCount / 200)
   }
 
-  const handleInputChange = (field: keyof typeof formData, value: string) => {
+  const handleInputChange = (field: keyof typeof formData, value: string | number) => {
     setFormData(prev => {
       const newData = { ...prev, [field]: value }
       
       // Auto-calculate reading time when content changes
       if (field === 'content') {
-        newData.readingTime = calculateReadingTime(value)
+        newData.readingTime = calculateReadingTime(value as string)
       }
       
       return newData

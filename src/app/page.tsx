@@ -5,8 +5,35 @@ import { ReviewCard } from '@/components/review-card'
 import { prisma } from '@/lib/prisma'
 import HeroImage from '@/components/hero-image'
 import { AdSenseAd } from '@/components/adsense-ad'
+import { Metadata } from 'next'
+
+export async function generateMetadata(): Promise<Metadata> {
+  // Get site settings for SEO
+  const siteSettings = await prisma.siteSettings.findFirst()
+  
+  return {
+    title: siteSettings?.seoTitle || 'Kitchen Cursor - Product Reviews & Tech Blog',
+    description: siteSettings?.seoDescription || 'Discover in-depth product reviews, tech insights, and buying guides to help you make informed decisions.',
+    keywords: siteSettings?.seoKeywords || 'product reviews, tech blog, buying guides, affiliate marketing',
+    openGraph: {
+      title: siteSettings?.seoTitle || 'Kitchen Cursor - Product Reviews & Tech Blog',
+      description: siteSettings?.seoDescription || 'Discover in-depth product reviews, tech insights, and buying guides to help you make informed decisions.',
+      type: 'website',
+      url: 'https://kitchencursor.com',
+      siteName: 'Kitchen Cursor',
+    },
+    twitter: {
+      card: 'summary_large_image',
+      title: siteSettings?.seoTitle || 'Kitchen Cursor - Product Reviews & Tech Blog',
+      description: siteSettings?.seoDescription || 'Discover in-depth product reviews, tech insights, and buying guides to help you make informed decisions.',
+    },
+  }
+}
 
 export default async function Home() {
+  // Get site settings for hero section
+  const siteSettings = await prisma.siteSettings.findFirst()
+  
   // Get featured post (most recent published post)
   const featuredPost = await prisma.post.findFirst({
     where: { status: 'PUBLISHED' },
@@ -46,10 +73,10 @@ export default async function Home() {
       {/* Hero Section */}
       <section className="text-center py-16 bg-gradient-to-br from-primary/5 to-secondary/5 rounded-2xl mb-12">
         <h1 className="text-4xl md:text-6xl font-bold text-primary mb-6">
-          Discover Amazing Products
+          {siteSettings?.heroTitle || 'Discover Amazing Products'}
         </h1>
         <p className="text-xl text-muted-foreground mb-8 max-w-2xl mx-auto">
-          In-depth reviews, expert insights, and buying guides to help you make informed decisions on the products that matter most.
+          {siteSettings?.heroDescription || 'In-depth reviews, expert insights, and buying guides to help you make informed decisions on the products that matter most.'}
         </p>
         <div className="flex gap-4 justify-center">
           <Link href="/reviews">

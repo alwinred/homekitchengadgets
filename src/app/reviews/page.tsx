@@ -1,4 +1,6 @@
 import { Metadata } from 'next'
+import Link from 'next/link'
+import { Button } from '@/components/ui/button'
 import { ReviewCard } from '@/components/review-card'
 import { prisma } from '@/lib/prisma'
 
@@ -99,27 +101,14 @@ export default async function ReviewsPage() {
           </div>
         )}
 
-        {/* Categories Section (Future Enhancement) */}
-        <section className="mt-16 py-12 bg-muted/20 rounded-2xl">
-          <div className="text-center">
-            <h2 className="text-3xl font-bold mb-4 text-primary">
-              Review Categories
-            </h2>
-            <p className="text-muted-foreground mb-8">
-              Coming soon: Browse reviews by category
-            </p>
-            <div className="grid grid-cols-2 md:grid-cols-4 gap-4 max-w-2xl mx-auto">
-              {['Kitchen', 'Technology', 'Fitness', 'Home & Garden'].map((category) => (
-                <div 
-                  key={category}
-                  className="bg-background rounded-lg p-4 shadow-sm border"
-                >
-                  <p className="font-medium text-primary">{category}</p>
-                </div>
-              ))}
-            </div>
-          </div>
-        </section>
+        {/* Back to Home */}
+        <div className="text-center mt-12">
+          <Link href="/">
+            <Button variant="outline">
+              ← Back to Home
+            </Button>
+          </Link>
+        </div>
       </div>
     </>
   )

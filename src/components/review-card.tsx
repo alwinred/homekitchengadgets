@@ -14,14 +14,15 @@ interface ReviewCardProps {
     reviewContent: string
     createdAt: Date
   }
+  stackedButtons?: boolean
 }
 
-export function ReviewCard({ review }: ReviewCardProps) {
+export function ReviewCard({ review, stackedButtons = false }: ReviewCardProps) {
   const renderStars = (rating: number) => {
     return Array.from({ length: 5 }).map((_, i) => (
       <Star
         key={i}
-        className={`h-4 w-4 ${
+        className={`h-3 w-3 ${
           i < rating ? 'text-yellow-400 fill-current' : 'text-gray-300'
         }`}
       />
@@ -37,41 +38,41 @@ export function ReviewCard({ review }: ReviewCardProps) {
           className="w-full h-full object-cover"
         />
       </div>
-      <CardContent className="p-6">
-        <CardTitle className="mb-2 line-clamp-2 hover:text-primary transition-colors">
+      <CardContent className="p-4">
+        <CardTitle className="mb-1 line-clamp-2 hover:text-primary transition-colors text-base">
           {review.productTitle}
         </CardTitle>
-        <div className="flex items-center gap-1 mb-2">
+        <div className="flex items-center gap-1 mb-1">
           {renderStars(review.rating)}
-          <span className="ml-2 text-sm text-muted-foreground">
+          <span className="ml-1 text-xs text-muted-foreground">
             {review.rating}/5
           </span>
         </div>
-        <CardDescription className="mb-4 line-clamp-3">
+        <CardDescription className="mb-2 line-clamp-2 text-xs">
           {review.reviewContent}
         </CardDescription>
-        <p className="text-sm text-muted-foreground mb-4">
+        <p className="text-xs text-muted-foreground mb-3">
           {formatDate(review.createdAt)}
         </p>
         
-        {/* Two Buttons Side by Side */}
-        <div className="flex gap-2">
+        {/* Buttons - Side by side or stacked */}
+        <div className={stackedButtons ? "space-y-2" : "flex gap-2"}>
           <Link
             href={`/reviews/${review.id}`}
-            className="flex-1"
+            className="block flex-1"
           >
-                            <button className="w-full border border-input bg-background hover:bg-accent hover:text-accent-foreground text-foreground px-4 py-2 rounded-md text-sm font-medium transition-colors whitespace-nowrap">
-                  Read Review
-                </button>
+            <button className="w-full border border-input bg-background hover:bg-accent hover:text-accent-foreground text-foreground px-4 py-2 rounded-md text-sm font-medium transition-colors">
+              Review
+            </button>
           </Link>
 
           <Link
             href={review.productLink}
             target="_blank"
             rel="noopener noreferrer"
-            className="flex-1"
+            className="block flex-[1.67]"
           >
-            <button className="w-full bg-orange-500 hover:bg-orange-600 text-white px-4 py-2 rounded-md text-sm font-medium transition-colors whitespace-nowrap">
+            <button className="w-full bg-orange-500 hover:bg-orange-600 text-white px-4 py-2 rounded-md text-sm font-medium transition-colors">
               View on Amazon
             </button>
           </Link>

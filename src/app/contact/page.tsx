@@ -1,7 +1,8 @@
 import Link from 'next/link'
 import { Button } from '@/components/ui/button'
-import { ArrowLeft, Mail, Facebook, Twitter, Instagram } from 'lucide-react'
+import { ArrowLeft, Mail, Facebook, Twitter, Instagram, Youtube, Linkedin } from 'lucide-react'
 import { Metadata } from 'next'
+import { getSiteSettings } from '@/lib/site-settings'
 
 export const metadata: Metadata = {
   title: 'Contact Us - Kitchen Cursor',
@@ -13,7 +14,9 @@ export const metadata: Metadata = {
   },
 }
 
-export default function ContactPage() {
+export default async function ContactPage() {
+  const siteSettings = await getSiteSettings()
+  
   return (
     <div className="container mx-auto px-4 py-8">
       <Link href="/" className="inline-flex items-center text-primary hover:underline mb-6">
@@ -53,11 +56,11 @@ export default function ContactPage() {
                   Have a question, suggestion, or feedback? We'd love to hear from you!
                 </p>
                 <a 
-                  href="mailto:contact@kitchencursor.com" 
+                  href={`mailto:${siteSettings.contactEmail}`} 
                   className="inline-flex items-center gap-2 text-primary hover:underline font-medium"
                 >
                   <Mail className="h-5 w-5" />
-                  contact@kitchencursor.com
+                  {siteSettings.contactEmail}
                 </a>
               </div>
 
@@ -67,33 +70,74 @@ export default function ContactPage() {
                   Stay updated with our latest reviews, tips, and kitchen insights.
                 </p>
                 <div className="flex gap-4">
-                  <a 
-                    href="https://facebook.com/kitchencursor" 
-                    target="_blank" 
-                    rel="noopener noreferrer"
-                    className="text-muted-foreground hover:text-primary transition-colors"
-                    aria-label="Follow us on Facebook"
-                  >
-                    <Facebook className="h-6 w-6" />
-                  </a>
-                  <a 
-                    href="https://twitter.com/kitchencursor" 
-                    target="_blank" 
-                    rel="noopener noreferrer"
-                    className="text-muted-foreground hover:text-primary transition-colors"
-                    aria-label="Follow us on Twitter"
-                  >
-                    <Twitter className="h-6 w-6" />
-                  </a>
-                  <a 
-                    href="https://instagram.com/kitchencursor" 
-                    target="_blank" 
-                    rel="noopener noreferrer"
-                    className="text-muted-foreground hover:text-primary transition-colors"
-                    aria-label="Follow us on Instagram"
-                  >
-                    <Instagram className="h-6 w-6" />
-                  </a>
+                  {siteSettings.facebookUrl && (
+                    <a 
+                      href={siteSettings.facebookUrl} 
+                      target="_blank" 
+                      rel="noopener noreferrer"
+                      className="text-muted-foreground hover:text-primary transition-colors"
+                      aria-label="Follow us on Facebook"
+                    >
+                      <Facebook className="h-6 w-6" />
+                    </a>
+                  )}
+                  {siteSettings.twitterUrl && (
+                    <a 
+                      href={siteSettings.twitterUrl} 
+                      target="_blank" 
+                      rel="noopener noreferrer"
+                      className="text-muted-foreground hover:text-primary transition-colors"
+                      aria-label="Follow us on Twitter"
+                    >
+                      <Twitter className="h-6 w-6" />
+                    </a>
+                  )}
+                  {siteSettings.instagramUrl && (
+                    <a 
+                      href={siteSettings.instagramUrl} 
+                      target="_blank" 
+                      rel="noopener noreferrer"
+                      className="text-muted-foreground hover:text-primary transition-colors"
+                      aria-label="Follow us on Instagram"
+                    >
+                      <Instagram className="h-6 w-6" />
+                    </a>
+                  )}
+                  {siteSettings.tiktokUrl && (
+                    <a 
+                      href={siteSettings.tiktokUrl} 
+                      target="_blank" 
+                      rel="noopener noreferrer"
+                      className="text-muted-foreground hover:text-primary transition-colors"
+                      aria-label="Follow us on TikTok"
+                    >
+                      <svg className="h-6 w-6" viewBox="0 0 24 24" fill="currentColor">
+                        <path d="M19.59 6.69a4.83 4.83 0 0 1-3.77-4.25V2h-3.45v13.67a2.89 2.89 0 0 1-5.2 1.74 2.89 2.89 0 0 1 2.31-4.64 2.93 2.93 0 0 1 .88.13V9.4a6.84 6.84 0 0 0-1-.05A6.33 6.33 0 0 0 5 20.1a6.34 6.34 0 0 0 10.86-4.43v-7a8.16 8.16 0 0 0 4.77 1.52v-3.4a4.85 4.85 0 0 1-1-.1z"/>
+                      </svg>
+                    </a>
+                  )}
+                  {siteSettings.youtubeUrl && (
+                    <a 
+                      href={siteSettings.youtubeUrl} 
+                      target="_blank" 
+                      rel="noopener noreferrer"
+                      className="text-muted-foreground hover:text-primary transition-colors"
+                      aria-label="Follow us on YouTube"
+                    >
+                      <Youtube className="h-6 w-6" />
+                    </a>
+                  )}
+                  {siteSettings.linkedinUrl && (
+                    <a 
+                      href={siteSettings.linkedinUrl} 
+                      target="_blank" 
+                      rel="noopener noreferrer"
+                      className="text-muted-foreground hover:text-primary transition-colors"
+                      aria-label="Follow us on LinkedIn"
+                    >
+                      <Linkedin className="h-6 w-6" />
+                    </a>
+                  )}
                 </div>
               </div>
 

@@ -19,11 +19,16 @@ import {
   FileText, 
   Star 
 } from 'lucide-react'
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 
 export function Navigation() {
   const { data: session } = useSession()
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false)
+  const [siteSettings, setSiteSettings] = useState({
+    logoText: 'Kitchen Cursor',
+    logoImage: null,
+    useLogoImage: false
+  })
 
   const handleSignOut = () => {
     signOut()
@@ -34,13 +39,33 @@ export function Navigation() {
     setIsMobileMenuOpen(false)
   }
 
+  useEffect(() => {
+    // Fetch site settings for logo
+    fetch('/api/site-settings')
+      .then(res => res.json())
+      .then(data => {
+        setSiteSettings(data)
+      })
+      .catch(err => {
+        console.error('Failed to load site settings:', err)
+      })
+  }, [])
+
   return (
     <nav className="border-b bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60 sticky top-0 z-50">
       <div className="container mx-auto px-4">
         <div className="flex h-16 items-center justify-between">
           {/* Logo */}
           <Link href="/" className="text-2xl font-bold text-primary hover:text-primary/80 transition-colors">
-            Kitchen Cursor
+            {siteSettings.useLogoImage && siteSettings.logoImage ? (
+              <img 
+                src={siteSettings.logoImage} 
+                alt={siteSettings.logoText} 
+                className="h-8 w-auto"
+              />
+            ) : (
+              siteSettings.logoText
+            )}
           </Link>
           
           {/* Desktop Navigation */}

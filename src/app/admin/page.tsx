@@ -2,7 +2,7 @@ import Link from 'next/link'
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card'
 import { Button } from '@/components/ui/button'
 import { prisma } from '@/lib/prisma'
-import { FileText, Eye, PlusCircle, Star } from 'lucide-react'
+import { FileText, Eye, PlusCircle, Star, Settings } from 'lucide-react'
 
 export default async function AdminDashboard() {
   // Get statistics
@@ -109,6 +109,12 @@ export default async function AdminDashboard() {
               <Button variant="outline" className="w-full justify-start gap-2">
                 <PlusCircle className="h-4 w-4" />
                 Generate New Content
+              </Button>
+            </Link>
+            <Link href="/admin/site-settings" className="block">
+              <Button variant="outline" className="w-full justify-start gap-2">
+                <Settings className="h-4 w-4" />
+                Site Settings
               </Button>
             </Link>
           </CardContent>

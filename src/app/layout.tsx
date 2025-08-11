@@ -4,6 +4,7 @@ import { SessionProvider } from "@/components/session-provider";
 import { Navigation } from "@/components/navigation";
 import { Footer } from "@/components/footer";
 import { AdSenseScript } from "@/components/adsense-script";
+import { Toaster } from "sonner";
 import "./globals.css";
 import "../styles/jodit.css";
 
@@ -54,6 +55,7 @@ export default function RootLayout({
             {children}
           </main>
           <Footer />
+          <Toaster />
         </SessionProvider>
       </body>
     </html>

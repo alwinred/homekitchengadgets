@@ -16,6 +16,7 @@ A complete, production-ready Next.js 14 blog and product review platform with AI
 - 🤖 **AI Post Generation** using OpenAI API for content and DALL-E for images
 - 🛍️ **Product Review Management** with approval workflow
 - 📊 **Dashboard** with statistics and quick actions
+- ⚙️ **Site Settings** for managing logo, social media links, and footer content
 
 ### AI Integration
 - ✨ **OpenAI GPT-4** for SEO-optimized article generation
@@ -81,6 +82,9 @@ After running the seed script:
 - \`PUT /api/admin/reviews/[id]\` - Approve/edit product review
 - \`DELETE /api/admin/reviews/[id]\` - Delete product review
 - \`POST /api/admin/generate-post\` - Generate new post with AI
+- \`GET /api/admin/site-settings\` - Get site settings
+- \`PUT /api/admin/site-settings\` - Update site settings
+- \`POST /api/admin/upload\` - Upload logo image
 
 ### Authentication
 - \`/api/auth/[...nextauth]\` - NextAuth endpoints
@@ -91,6 +95,7 @@ After running the seed script:
 - **User**: Authentication and role management
 - **Post**: Blog posts with status workflow
 - **ProductReview**: Product reviews linked to posts
+- **SiteSettings**: Site configuration (logo, social media, footer content)
 
 ### Enums
 - **Role**: USER | ADMIN
