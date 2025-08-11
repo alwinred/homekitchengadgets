@@ -10,6 +10,7 @@ interface ProductReview {
   rating: number
   reviewContent: string
   status: string
+  createdAt?: Date
 }
 
 interface RelatedReviewsProps {

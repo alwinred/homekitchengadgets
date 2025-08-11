@@ -33,15 +33,15 @@ export default async function ContactPage() {
             <div className="space-y-4 text-muted-foreground">
               <p>
                 Welcome to Kitchen Cursor, your trusted source for in-depth kitchen product reviews and expert insights. 
-                We're passionate about helping you make informed decisions when it comes to your kitchen investments.
+                We&apos;re passionate about helping you make informed decisions when it comes to your kitchen investments.
               </p>
               <p>
                 Our team of experts thoroughly tests and reviews a wide range of kitchen appliances, gadgets, and tools 
                 to provide you with honest, detailed assessments that you can rely on.
               </p>
               <p>
-                Whether you're looking for the perfect coffee maker, air fryer, or any other kitchen essential, 
-                we're here to guide you through the selection process with comprehensive reviews and buying guides.
+                Whether you&apos;re looking for the perfect coffee maker, air fryer, or any other kitchen essential, 
+                we&apos;re here to guide you through the selection process with comprehensive reviews and buying guides.
               </p>
             </div>
           </div>
@@ -53,7 +53,7 @@ export default async function ContactPage() {
               <div>
                 <h3 className="text-lg font-semibold mb-3">Email Us</h3>
                 <p className="text-muted-foreground mb-4">
-                  Have a question, suggestion, or feedback? We'd love to hear from you!
+                  Have a question, suggestion, or feedback? We&apos;d love to hear from you!
                 </p>
                 <a 
                   href={`mailto:${siteSettings.contactEmail}`} 

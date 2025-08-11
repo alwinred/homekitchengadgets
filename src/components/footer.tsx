@@ -7,15 +7,15 @@ import { useState, useEffect } from 'react'
 export function Footer() {
   const [siteSettings, setSiteSettings] = useState({
     logoText: 'Kitchen Cursor',
-    logoImage: null,
     useLogoImage: false,
+    logoImage: null,
     facebookUrl: null,
     twitterUrl: null,
     instagramUrl: null,
     tiktokUrl: null,
     youtubeUrl: null,
     linkedinUrl: null,
-    footerAboutText: 'Discover in-depth product reviews, expert insights, and buying guides to help you make informed decisions on the products that matter most. From kitchen gadgets to tech gear, we test everything so you don\'t have to.'
+    footerAboutText: 'Discover in-depth product reviews, expert insights, and buying guides to help you make informed decisions on the products that matter most. From kitchen gadgets to tech gear, we test everything so you don&apos;t have to.'
   })
 
   useEffect(() => {

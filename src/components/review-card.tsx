@@ -12,7 +12,7 @@ interface ReviewCardProps {
     productLink: string
     rating: number
     reviewContent: string
-    createdAt: Date
+    createdAt?: Date
   }
   stackedButtons?: boolean
 }
@@ -51,9 +51,11 @@ export function ReviewCard({ review, stackedButtons = false }: ReviewCardProps) 
         <CardDescription className="mb-2 line-clamp-2 text-xs">
           {review.reviewContent}
         </CardDescription>
-        <p className="text-xs text-muted-foreground mb-3">
-          {formatDate(review.createdAt)}
-        </p>
+        {review.createdAt && (
+          <p className="text-xs text-muted-foreground mb-3">
+            {formatDate(review.createdAt)}
+          </p>
+        )}
         
         {/* Buttons - Side by side or stacked */}
         <div className={stackedButtons ? "space-y-2" : "flex gap-2"}>

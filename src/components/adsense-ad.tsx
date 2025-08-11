@@ -29,7 +29,7 @@ export function AdSenseAd({
         process.env.NEXT_PUBLIC_ADSENSE_PUBLISHER_ID &&
         process.env.NEXT_PUBLIC_ADSENSE_PUBLISHER_ID !== 'ca-pub-YOUR_PUBLISHER_ID') {
       try {
-        setAdSenseLoaded(true)
+        setAdSenseLoaded(true);
         (window.adsbygoogle = window.adsbygoogle || []).push({});
       } catch (error) {
         console.error('AdSense error:', error);

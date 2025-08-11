@@ -11,7 +11,7 @@ export default function SiteSettingsPage() {
         </Link>
         <h1 className="text-3xl font-bold text-primary">Site Settings</h1>
         <p className="text-muted-foreground">
-          Manage your site's logo, social media links, and footer content
+          Manage your site&apos;s logo, social media links, and footer content
         </p>
       </div>
       

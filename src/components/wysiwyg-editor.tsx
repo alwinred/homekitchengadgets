@@ -186,7 +186,7 @@ export function WysiwygEditor({
               inlineToolbar: true,
               config: {
                 quotePlaceholder: 'Enter a quote',
-                captionPlaceholder: 'Quote\'s author'
+                captionPlaceholder: 'Quote&apos;s author'
               }
             },
             marker: {
