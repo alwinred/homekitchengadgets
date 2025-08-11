@@ -145,7 +145,7 @@ export default async function ContactPage() {
                 <h3 className="text-lg font-semibold mb-3">Response Time</h3>
                 <p className="text-muted-foreground">
                   We typically respond to all inquiries within 24-48 hours during business days. 
-                  For urgent matters, please include "URGENT" in your email subject line.
+                  For urgent matters, please include &quot;URGENT&quot; in your email subject line.
                 </p>
               </div>
             </div>
